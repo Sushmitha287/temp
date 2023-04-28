@@ -1,0 +1,84 @@
+create database HeroVired;
+create table RGM (studentid int primary key not null,
+name varchar(30) not null,
+college varchar(40) not null,
+session varchar(30) not null,
+contactnumber int not null,
+address varchar(70) not null);
+select *from RGM;
+INSERT INTO RGM (studentid,name,college,session,contactnumber,address) VALUES (101,"sushmi","rgm","python",785845,"nandyal");
+INSERT INTO RGM VALUES (102,"sunny","svr","java",54645,"kurnool")
+INSERT INTO RGM VALUES (109,"ruchith","rgm","python",5566786,"anathapur"),(110,"sanath","vit","java",675656,"vijayawada");
+
+
+
+-- where clause
+-- Find all the rows where session is equal to c 
+SELECT * FROM rgm WHERE session = "java";
+SELECT studentid,name,session from rgm WHERE session = "java";
+SELECT * from rgm;
+
+SELECT * from rgm WHERE session = "java" AND address = "vijayawada";
+SELECT * from rgm where address = "kurnool";
+SELECT * from rgm WHERE name LIKE "sa%"; 
+SELECT * from rgm WHERE name LIKE "%a";
+SELECT * from rgm WHERE name LIKE "_u%";
+SELECT * from rgm WHERE name NOT LIKE "s%";
+SELECT * from rgm WHERE address IN ("kurnool" , "vijayawada");
+SELECT * from rgm WHERE college IN ("rgm", "vit");
+SELECT * from rgm WHERE college = "rgm" AND college = "vit";
+create table student(id int primary key not null,
+s_name varchar(30) not null,
+marks int not null
+);
+select * from student;
+insert into student values(510,"karna",60);
+select * from student where marks = 93;
+select * from student where marks > 93;
+select * from student where marks < 93;
+select * from student where marks <= 85;
+select * from student where marks >= 93;
+select * from student where id >= 505;
+select * from student where marks <> 93;  -- not equal 
+select * from student where marks between 83 and 93;
+select * from student where marks between 83 and 93 order by marks; 
+select * from student where marks between 83 and 93 order by marks asc;   -- ascending order by using asc
+select * from student where marks between 83 and 93 order by marks desc;
+-- >,<,>=,<=,=
+select * from student where not marks = 93;
+select * from rgm;
+select distinct address from rgm;
+select count(distinct address) from rgm;
+select count(distinct marks) from student;
+select *from student where not marks = 75 and not marks = 91;
+select * from rgm limit 3;
+select * from rgm  where address = 'kurnool' limit 3;
+select * from rgm  where address = 'kurnool' limit 3;
+select * from rgm order by address = "vijayawada" limit 2;       -- group by using count keywo
+select * from rgm where college = 'rgm' order by studentid  limit 5;
+
+
+
+
+
+-- Creating dob table
+create table dob(
+date_ date not null
+);
+insert into dob values ('2023-07-28');
+insert into dob values ('2023-06-08');
+select * from dob;
+
+
+
+
+-- creating salespeople table
+create table salespeople (id int primary key not null,
+name varchar(30) not null,
+city varchar(40) not null,
+commission real not null
+);
+select * from salespeople;
+insert into salespeople values (201,'yudisthar','hasthinapur',0.54);
+insert into salespeople values (202,'bheema','hasthinapur',0.87);
+select name , commission from salespeople;
