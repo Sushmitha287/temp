@@ -1,0 +1,115 @@
+-- 01-05-23
+
+show databases;
+select * from rgm;
+-- 
+update rgm set name="arjun" where contactnumber = 723867;
+-- we get error to update,so we have to change some settings in "edit" -> "preferences" -> "uncheck last checkbox"
+update rgm set name="arjun" where contactnumber = 723867;
+update rgm set session = "java" , address = "kurnool" where contactnumber = 556756;
+select * from student;
+studentcreate table test (id int primary key not null,
+s_name varchar(30) not null,
+marks int not null
+);
+-- create 
+select * from test;
+-- insert into test select * from student;
+-- INSERT INTO test SELECT * FROM student;
+
+
+
+SELECT * FROM rgm.student;
+create table test1 (
+student_id int primary key not null,
+student_name varchar(30) not null,
+student_contanct int not null,
+student_dept varchar(25) not null
+);
+INSERT INTO test1 SELECT * FROM student;  -- copy student data into test1
+TRUNCATE TABLE test1;  -- to delete data not table structure
+select * from student;
+delete from student where student_name = "adhi";  -- delete entire row
+drop table test;  -- delete the table
+
+alter table student rename column student_name to name;  -- rename the column name
+
+alter table student rename to rgm_student;
+select * from rgm_student;
+create database sushmitha;
+show databases;
+drop database sushmitha;  -- to drop the database
+alter table rgm_student add address varchar(30);
+update rgm_student set address = 'hospet' where student_id = 10;
+insert into rgm_student (address) values ('kurnool' , 'kadapa'
+alter table rgm_student modify column address varchar(50);
+select * from test1;
+alter
+
+select * from student;
+select max(marks) from student;  -- to get max of column
+select avg(marks) from student;  -- to get avg of col
+select sum(marks) from student;   -- to get sum of all values in col
+select sum(marks) as total from student;  -- to change the column name in the output
+select count(marks) from student;
+
+create database exercise;
+create table customer (id int primary key, name varchar(30) , city varchar(30), grade int , salesman_id int);
+insert into customer values (101,'yudhistar','delhi', 99,201),
+(102,'bheema','hospet',98,202),
+(103,'arjuna','hubli',88,203),
+(104,'nakula','ramdhurg',67,204),
+(105,'sahadev','jamkandi',56,205),
+(106,'karna','kolhapur',87,206),
+(107,'dhuryodhan','kadapa',86,207),
+(108,'dhushyashan','kurnool',88,208),
+(109,'krishna','dhwaraka',87,209),
+(110,'balaram','dhwaraka',56,210);
+select * from customer;
+-- write a sql query to find out the details of the customer whose grade are above 90
+select * from customer where grade >90;
+select * from customer where grade >= 90;
+
+-- write an sql query to find out the customer who are living in delhi lessthan or equal to 100
+select * from customer where city = 'delhi' and grade < 100;
+-- write an sql query to find out the customer who are living in delhi lessthan or equal to 100
+select * from customer where city = 'delhi' and grade <= 100;
+
+-- write an sql query to find out the customer who are living in delhi lessthan or equal to 100
+select * from customer where city = 'delhi' and grade >= 100;
+-- write a sql to find out names of the customer who are from dhwaraka and grade above than 90
+select * from customer where city='dhwaraka' or grade > 90;
+-- write a sql query to find out the customer details who are either from kadapa who don't get grade above 90
+select* from customer where city='kadapa' or not grade > 90;
+
+-- write sql query to identify the customer who donot belong to the city dharaka or have a grade that exceeds 90
+select *from customer where not city = 'kadapa' and grade > 90; 
+-- write the order details excluding the data 30-04-2023 and salesman id more than 202 or purchase amount > 1000
+create table orders(
+order_num int,
+purchase_amt int ,
+order_date date,
+customer_id int,salesman_id int);
+select * from orders;
+insert into orders values (2002,1003,'23-04-23',101,201),
+(2003,1065,'24-04-23',102,202),
+(2004,1045,'24-04-23',103,203),
+(2005,1345,'25-04-23',104,203),
+(2003,1672,'29-04-23',105,203);
+select * from orders where not order_date='24-04-23' and salesman_id>202 or purchace_amt=1003;
+
+create table salesman(
+salesman_id int primary key,name varchar(30),city varchar(30),commission float);
+select * from salesman;
+insert into salesman values(200,'sushmitha','anathapur',0.67),(201,'yashu','nandyal',0.34),
+(202,'swetha','thadipathri',0.23),
+(203,'sukanya','kadiri',0.67);
+-- find the salesman details whose name startswith k letter
+select * from salesman where name like 'k%';
+-- create a col address ,insert some data in that address col and display all those address as 'salesman adderess' in descending order
+alter table salesman add address varchar(30);
+update salesman set address=' kurnnol' where name='sushmitha';
+update salesman set address=' kadapa' where name='yashu';
+update salesman set address=' anathapur' where name='swetha';
+update salesman set address=' hyd' where name='sukanya';
+select address from salesman order by address desc;
